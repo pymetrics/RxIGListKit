@@ -1,10 +1,12 @@
-// swift-tools-version:5.0
+// swift-tools-version:5.3
+// The swift-tools-version declares the minimum version of Swift required to build this package.
+
 import PackageDescription
 
 let package = Package(
   name: "RxIGListKit",
   platforms: [
-    .iOS(.v9), .tvOS(.v9)
+    .iOS(.v11)
   ],
   products: [
     .library(name: "RxIGListKit", targets: ["RxIGListKit"]),
@@ -14,7 +16,7 @@ let package = Package(
     .package(url: "https://github.com/Instagram/IGListKit.git", .upToNextMajor(from: "4.0.0")),
   ],
   targets: [
-    .target(name: "RxIGListKit", dependencies: ["IGListKit", "RxSwift", "RxCocoa"]),
+    .target(name: "RxIGListKit", dependencies: ["IGListKit", "RxSwift", .product(name: "RxCocoa", package: "RxSwift")]),
   ],
   swiftLanguageVersions: [.v5]
 )
